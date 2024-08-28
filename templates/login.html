@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="static/password.css">
+    <link rel="icon" href="/static/logo.png" type="image/png">
+
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+        </div>
+    </header>
+    <div class="background-container">
+        <img src="static/workout-image.png" class="background-image active">
+        <img src="static/workout-image2.png" class="background-image">
+        <img src="static/workout-image3.png" class="background-image">
+        <img src="static/workout-image4.png" class="background-image">
+
+        <div class="form-container">
+            <form action="dashboard.html" class="form login-form">
+                <h2 class="title">Login</h2>
+                <div class="input-field">
+                    <input type="text" placeholder="Username" required>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <span class="toggle-password">
+                        <img src="static/eye1.png" id="togglePassword">
+                    </span>
+                </div>
+                
+                <button type="submit" class="btn">Login</button>
+                <p class="register-link"> <a href="forgotten.html">Forgotten password?</a></p>
+                <p class="register-link">Don't have an account? <a href="register.html">Register here</a></p>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>
+            Your Fitness Journey Together...
+        </p>
+    </footer>
+    <script src="static/script.js"></script>
+</body>
+</html>
+
