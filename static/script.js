@@ -12,20 +12,24 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(changeBackground, 2000);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const togglePassword = document.querySelector('#togglePassword');
-    const passwordField = document.querySelector('#password');
+document.addEventListener('DOMContentLoaded', function() {
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordField = document.getElementById('password');
 
-    togglePassword.addEventListener('click', function () {
+    // Get the URLs from the data attributes
+    const eyeIcon = togglePassword.getAttribute('data-eye-icon');
+    const eyeSlashIcon = togglePassword.getAttribute('data-eye-slash-icon');
+
+    togglePassword.addEventListener('click', function() {
         // Toggle the type attribute
         const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordField.setAttribute('type', type);
 
         // Toggle the eye slash icon
         if (type === 'password') {
-            togglePassword.src = 'static/eye1.png'; // Show eye icon
+            togglePassword.querySelector('img').src = eyeIcon; // Show eye icon
         } else {
-            togglePassword.src = 'static/eye.png'; // Show eye slash icon
+            togglePassword.querySelector('img').src = eyeSlashIcon; // Show eye slash icon
         }
     });
 });
