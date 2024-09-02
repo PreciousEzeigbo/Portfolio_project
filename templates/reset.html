@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitConnect - Password Reset</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 60%, #8B4513 60%, #8B4513 100%);
+            background-attachment: fixed;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+        }
+        h1 {
+            color: #8B4513;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background-color: #8B4513;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #87CEEB;
+            color: #333;
+        }
+        #success-message {
+            display: none;
+            font-weight: bold;
+            color: green;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reset Your Password</h1>
+        <form id="reset-form">
+            <input type="text" id="verification-code" placeholder="Enter verification code" required>
+            <input type="password" id="new-password" placeholder="Enter new password" required>
+            <input type="password" id="confirm-password" placeholder="Confirm new password" required>
+            <button type="submit" class="btn">Reset Password</button>
+        </form>
+        <div id="success-message">Success!</div>
+    </div>
+    <script>
+        document.getElementById('reset-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally send the data to your server
+            // For this example, we'll just show the success message
+            document.getElementById('reset-form').style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+            setTimeout(function() {
+                window.location.href = "{{ url_for('auth.login') }}";
+            }, 3000);  // Redirect to login after 3 seconds
+        });
+    </script>
+</body>
+</html>

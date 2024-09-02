@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+        </div>
+    </header>
+    <div class="background-container">
+        <img src="{{ url_for('static', filename='workout-image.png') }}" class="background-image active">
+        <img src="{{ url_for('static', filename='workout-image2.png') }}" class="background-image">
+        <img src="{{ url_for('static', filename='workout-image3.png') }}" class="background-image">
+        <img src="{{ url_for('static', filename='workout-image4.png') }}" class="background-image">
+
+
+        <div class="form-container">
+            <form action="success.html" class="form register-form">
+                <h2 class="title">Sign Up</h2>
+                <div class="input-field">
+                    <input type="text" placeholder="First Name" required>
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Last Name" required>
+                </div>
+                <div class="input-field">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="input-field">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <div class="input-field">
+                    <input type="password" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>
+            Your Fitness Journey Together...
+        </p>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
