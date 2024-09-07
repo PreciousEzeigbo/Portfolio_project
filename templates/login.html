@@ -1,51 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='password.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
-</head>
-<body>
-    <header>
-        <div class="logo">
-        </div>
-    </header>
-    <div class="background-container">
-        <img src="{{ url_for('static', filename='workout-image.png') }}" class="background-image active">
-        <img src="{{ url_for('static', filename='workout-image2.png') }}" class="background-image">
-        <img src="{{ url_for('static', filename='workout-image3.png') }}" class="background-image">
-        <img src="{{ url_for('static', filename='workout-image4.png') }}" class="background-image">
+{% extends "base.html" %}
 
+{% block title %}Login - FitConnect{% endblock %}
 
-        <div class="form-container">
-            <form action="dashboard.html" class="form login-form">
-                <h2 class="title">Login</h2>
-                <div class="input-field">
-                    <input type="text" placeholder="Username" required>
-                </div>
-                <div class="input-field">
-                    <input type="password" id="password" placeholder="Password" required>
-                        <span class="toggle-password" id="togglePassword" data-eye-icon="{{ url_for('static', filename='eye1.png') }}" data-eye-slash-icon="{{ url_for('static', filename='eye.png') }}">
-                        <img src="{{ url_for('static', filename='eye1.png') }}" alt="Toggle Password Visibility">
-                        </span>
-                </div>
-                
-                <button type="submit" class="btn">Login</button>
-                <p class="register-link"> <a href="{{ url_for('auth.forgotten') }}">Forgotten password?</a></p>
-                <p class="register-link">Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign up here</a></p>
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/CSS/password.css') }}">
+{% endblock %}
 
-            </form>
-        </div>
+{% block background_images %}
+<img src="{{ url_for('static', filename='/images/workout-image.png') }}" class="background-image active">
+<img src="{{ url_for('static', filename='/images/workout-image2.png') }}" class="background-image">
+<img src="{{ url_for('static', filename='/images/workout-image3.png') }}" class="background-image">
+<img src="{{ url_for('static', filename='/images/workout-image4.png') }}" class="background-image">
+{% endblock %}
+
+{% block content %}
+<form action="dashboard.html" class="form login-form">
+    <h2 class="title">Login</h2>
+    <div class="input-field">
+        <input type="text" placeholder="Username" required>
     </div>
-    <footer>
-        <p>
-            Your Fitness Journey Together...
-        </p>
-    </footer>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
-</html>
-
+    <div class="input-field">
+        <input type="password" id="password" placeholder="Password" required>
+        <span class="toggle-password" id="togglePassword" data-eye-icon="{{ url_for('static', filename='/images/eye1.png') }}" data-eye-slash-icon="{{ url_for('static', filename='/images/eye.png') }}">
+        <img src="{{ url_for('static', filename='/images/eye1.png') }}" alt="Toggle Password Visibility">
+        </span>
+    </div>
+    
+    <button type="submit" class="btn">Login</button>
+    <p class="register-link"> <a href="{{ url_for('auth.forgotten') }}">Forgotten password?</a></p>
+    <p class="register-link">Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign up here</a></p>
+</form>
+{% endblock %}

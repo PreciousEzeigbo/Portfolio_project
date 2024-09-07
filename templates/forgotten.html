@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgotten Password</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='/images/logo.png') }}" type="image/png">
 </head>
 <body>
     <header>
@@ -13,10 +13,10 @@
         </div>
     </header>
     <div class="background-container">
-        <img src="{{ url_for('static', filename='workout-image.png') }}" class="background-image active">
-        <img src="{{ url_for('static', filename='workout-image2.png') }}" class="background-image">
-        <img src="{{ url_for('static', filename='workout-image3.png') }}" class="background-image">
-        <img src="{{ url_for('static', filename='workout-image4.png') }}" class="background-image">
+        <img src="{{ url_for('static', filename='/images/workout-image.png') }}" class="background-image active">
+        <img src="{{ url_for('static', filename='/images/workout-image2.png') }}" class="background-image">
+        <img src="{{ url_for('static', filename='/images/workout-image3.png') }}" class="background-image">
+        <img src="{{ url_for('static', filename='/images/workout-image4.png') }}" class="background-image">
 
         <div class="form-container">
             <form action="password-reset.html" class="form forgot-form">
@@ -34,7 +34,7 @@
             Your Fitness Journey Together...
         </p>
     </footer>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='/JS/script.js') }}"></script>
 </body>
 </html>
 
