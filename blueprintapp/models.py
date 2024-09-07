@@ -1,11 +1,12 @@
 from flask_login import UserMixin
+from datetime import datetime
 
-from app import db
+from blueprintapp.app import db
 
 class User(db.Model, UserMixin):
-    __tablename__ == 'users'
+    __tablename__ = 'users'
 
-    uid = db.Column(Integer, primary_key=True)
+    uid = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False)
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String, nullable=False)
