@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Forgotten Password - FitConnect{% endblock %}
+
+{% block background_images %}
+<img src="{{ url_for('static', filename='/images/workout-image.png') }}" class="background-image active">
+<img src="{{ url_for('static', filename='/images/workout-image2.png') }}" class="background-image">
+<img src="{{ url_for('static', filename='/images/workout-image3.png') }}" class="background-image">
+<img src="{{ url_for('static', filename='/images/workout-image4.png') }}" class="background-image">
+{% endblock %}
+
+{% block content %}
+<form action="password-reset.html" class="form forgot-form">
+    <h2 class="title">Forgot Password</h2>
+    <div class="input-field">
+        <input type="email" placeholder="Enter your email" required>
+    </div>
+    <button type="submit" class="btn">Submit</button>
+    <p class="login-link">Remembered your password? <a href="{{ url_for('auth.login') }}">Login here</a></p>
+</form>
+{% endblock %}

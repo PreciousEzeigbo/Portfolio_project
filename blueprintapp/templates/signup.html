@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Signup - FitConnect{% endblock %}
+
+{% block background_images %}
+<img src="{{ url_for('static', filename='/images/workout-image.png') }}" class="background-image active">
+<img src="{{ url_for('static', filename='/images/workout-image2.png') }}" class="background-image">
+<img src="{{ url_for('static', filename='/images/workout-image3.png') }}" class="background-image">
+<img src="{{ url_for('static', filename='/images/workout-image4.png') }}" class="background-image">
+{% endblock %}
+
+{% block content %}
+<form action="success.html" class="form register-form">
+    <h2 class="title">Sign Up</h2>
+    <div class="input-field">
+        <input type="text" placeholder="First Name" required>
+    </div>
+    <div class="input-field">
+        <input type="text" placeholder="Last Name" required>
+    </div>
+    <div class="input-field">
+        <input type="email" placeholder="Email" required>
+    </div>
+    <div class="input-field">
+        <input type="password" placeholder="Password" required>
+    </div>
+    <div class="input-field">
+        <input type="password" placeholder="Confirm Password" required>
+    </div>
+    <button type="submit" class="btn">Register</button>
+    <p class="login-link">Already have an account? <a href="{{ url_for('auth.login') }}">Login here</a></p>
+</form>
+{% endblock %}
