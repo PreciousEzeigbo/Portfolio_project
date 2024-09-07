@@ -1,57 +1,18 @@
-from flask import Flask, render_template, request, session, make_response, flash
+from flask import Flask
+from flask_sqlachemy import SQLAlchemy
+from flask_migrate import Migrate
 
-app = Flask(__name__, template_folder='templates')
-app.secret_key = 'SECRET KEY'
+db = SQLAlchemy()
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+def create_app():
+    app = Flask(__name__, template_folder= 'templates')
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./blueprints.db'
 
+    db.init_app(app)
 
-@app.route('/index')
-def index():
-    return render_template('index.html', message='index')
-
-@app.route('/set_data')
-def set_data():
-    session['name'] = 'Precious'
-    session['other'] = 'Hello world'
-    return render_template('index.html', message='Session data set.')
-
-@app.route('/get_data')
-def get_data():
-    if 'name' in session.keys() and 'other' in session.keys():
-        name = session['name']
-        other = session['other']
-        return render_template('index.html', message= f'Name: {name}, Other: {other}' )
-    else:
-        return render_template('index.html', message=f'No session found')
-
-@app.route('/set_cookie')
-def set_cookie():
-    response = make_response(render_template('index.html', message='Cookie set'))
-    response.set_cookie('cookie_name', 'cookie_value')
-    return response
-
-@app.route('/get_cookie')
-def get_cookie():
-    cookie_value = request.cookies['cookie_name']
-    return render_template('index.html', message=f'Cookie')
-
-@app.route('/enter', methods=['GET', 'POST'])
-def enter():
-    if request.method == 'GET':
-        return render_template('enter.html')
-    elif request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        if username == 'Precious' and password == "password":
-            flash('Successful Login!')
-            return render_template('index.html', message="")
-        else:
-            flash('Login Failed!')
-            return render_template('index.html', message="")
+    # Register Blueprints
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    migrate = Migrate(app, db)
+
+    return app
