@@ -3,14 +3,14 @@
 {% block title %}Login - FitConnect{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='/CSS/password.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/password.css') }}">
 {% endblock %}
 
 {% block background_images %}
-<img src="{{ url_for('static', filename='/images/workout-image.png') }}" class="background-image active">
-<img src="{{ url_for('static', filename='/images/workout-image2.png') }}" class="background-image">
-<img src="{{ url_for('static', filename='/images/workout-image3.png') }}" class="background-image">
-<img src="{{ url_for('static', filename='/images/workout-image4.png') }}" class="background-image">
+<img src="{{ url_for('static', filename='images/workout-image.png') }}" class="background-image active">
+<img src="{{ url_for('static', filename='images/workout-image2.png') }}" class="background-image">
+<img src="{{ url_for('static', filename='images/workout-image3.png') }}" class="background-image">
+<img src="{{ url_for('static', filename='images/workout-image4.png') }}" class="background-image">
 {% endblock %}
 
 {% block content %}
@@ -21,8 +21,8 @@
     </div>
     <div class="input-field">
         <input type="password" id="password" placeholder="Password" required>
-        <span class="toggle-password" id="togglePassword" data-eye-icon="{{ url_for('static', filename='/images/eye1.png') }}" data-eye-slash-icon="{{ url_for('static', filename='/images/eye.png') }}">
-        <img src="{{ url_for('static', filename='/images/eye1.png') }}" alt="Toggle Password Visibility">
+        <span class="toggle-password" id="togglePassword" data-eye-icon="{{ url_for('static', filename='images/eye1.png') }}" data-eye-slash-icon="{{ url_for('static', filename='images/eye.png') }}">
+        <img src="{{ url_for('static', filename='images/eye1.png') }}" alt="Toggle Password Visibility">
         </span>
     </div>
     
