@@ -15,10 +15,22 @@ def create_app():
 
     db.init_app(app)
 
-    # Register Blueprints
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+
+    from blueprintapp.models import User
+    @login_manager.user_loader
+    def load_user(uid):
+        return User.query.get(uid)
+    
+    bcrypt = Bcrypt(app)
+
+    # Register routes
     from blueprintapp.routes import register_routes
-    register_routes(app, db)
+    register_routes(app, db, bcrypt)
 
     migrate = Migrate(app, db)
+    migrate.init_app(app, db)
+
 
     return app
