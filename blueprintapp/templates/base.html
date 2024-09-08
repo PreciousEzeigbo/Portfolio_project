@@ -15,12 +15,25 @@
         </div>
         {% block header_content %}{% endblock %}
     </header>
-
     <div class="background-container">
         {% block background_images %}{% endblock %}
         
         <div class="form-container">
-            {% block content %}{% endblock %}
+            {% block content %}
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                    <strong>{{ message }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                {% block inner_content %}{% endblock %}
+            {% endblock %}
         </div>
     </div>
 
