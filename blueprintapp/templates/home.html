@@ -3,116 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitConnect - Home</title>
-    <style>
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 50%, #8B4513 50%, #8B4513 100%);
-            background-attachment: fixed;
-            color: #333;
-        }
-        header {
-            background-color: rgba(51, 51, 51, 0.8);
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-        nav a:hover {
-            background-color: #87CEEB;
-            color: #333;
-            cursor: pointer;
-        }
-        main {
-            padding: 2rem;
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.8);
-            margin: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #8B4513;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .features {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 2rem;
-        }
-        .feature {
-            flex-basis: 30%;
-            padding: 1rem;
-            background-color: rgba(135, 206, 235, 0.3);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        .feature:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
-        }
-        .cta-button {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 2rem;
-            background-color: #8B4513;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-        .cta-button:hover {
-            background-color: #87CEEB;
-            color: #333;
-            cursor: pointer;
-        }
-    </style>
+    <title>FitConnect - Your Fitness Community</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleshome.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo">FitConnect</div>
         <nav>
-            <a href="{{ url_for('login') }}">Login</a>
-            <a href="{{ url_for('signup') }}">Sign Up</a>
+            <div class="logo">FitConnect</div>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="{{ url_for('login') }}" class="cta-button">Join Now</a></li>
+            </ul>
         </nav>
     </header>
+
     <main>
-        <h1>Welcome to FitConnect</h1>
-        <p>Connect with fitness enthusiasts, track your progress, and achieve your goals!</p>
-        
-        <div class="features">
-            <div class="feature">
-                <h2>Connect</h2>
-                <p>Join a community of like-minded fitness enthusiasts. Share tips, motivate each other, and make new friends!</p>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Connect, Track, Achieve</h1>
+                <p>Join FitConnect and transform your fitness journey with our supportive community.</p>
+                <a href="#" class="cta-button">Get Started</a>
             </div>
-            <div class="feature">
-                <h2>Track</h2>
-                <p>Log your workouts, monitor your nutrition, and visualize your progress with our easy-to-use tracking tools.</p>
+        </section>
+
+        <section id="features">
+            <h2>Empower Your Fitness Goals</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Workout Tracking</h3>
+                    <p>Log and monitor your workouts with ease. Stay on top of your fitness routine.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Workout History</h3>
+                    <p>Review your past workouts and track your progress over time.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Social Feed</h3>
+                    <p>Connect with other fitness enthusiasts, share your achievements, and get inspired.</p>
+                </div>
             </div>
-            <div class="feature">
-                <h2>Achieve</h2>
-                <p>Set personal goals, join challenges, and celebrate your fitness milestones with the FitConnect community.</p>
+        </section>
+
+        <section id="about">
+            <h2>About FitConnect</h2>
+            <p>FitConnect was born from our passion for fitness and community. We believe in the power of shared goals and mutual support to achieve fitness success.</p>
+            <p>This project is a Portfolio Project for Holberton School, developed with dedication and expertise. Learn more about Holberton School <a href="https://www.holbertonschool.com/" target="_blank">here</a>.</p>
+            
+            <h3>Meet the Team</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Precious Ezeigbo">
+                    <h4>Precious Ezeigbo</h4>
+                    <p>Fitness Enthusiast & Lead Developer</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/precious-ezeigbo-38902b247" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/PreciousEzeigbo" target="_blank">GitHub</a>
+                        <a href="https://x.com/PreciousEzeigbo" target="_blank">X</a>
+                    </div>
+                </div>
+                <!-- Add more team members as needed -->
             </div>
-        </div>
-        
-        <a href="{{ url_for('signup') }}" class="cta-button">Join FitConnect Today!</a>
+            <p>Explore our <a href="https://github.com/PreciousEzeigbo/Protfolio_project" target="_blank">GitHub repository</a> for more details about the project.</p>
+        </section>
     </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 FitConnect. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
