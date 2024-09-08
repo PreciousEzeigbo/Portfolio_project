@@ -14,20 +14,20 @@
 {% endblock %}
 
 {% block content %}
-<form action="dashboard.html" class="form login-form">
+<form action="{{ url_for('login') }}" method="POST">
     <h2 class="title">Login</h2>
     <div class="input-field">
-        <input type="text" placeholder="Username" required>
+        <input type="text" name="username" placeholder="Username" required>
     </div>
     <div class="input-field">
-        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
         <span class="toggle-password" id="togglePassword" data-eye-icon="{{ url_for('static', filename='images/eye1.png') }}" data-eye-slash-icon="{{ url_for('static', filename='images/eye.png') }}">
         <img src="{{ url_for('static', filename='images/eye1.png') }}" alt="Toggle Password Visibility">
         </span>
     </div>
     
     <button type="submit" class="btn">Login</button>
-    <p class="register-link"> <a href="{{ url_for('auth.forgotten') }}">Forgotten password?</a></p>
-    <p class="register-link">Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign up here</a></p>
+    <p class="register-link"> <a href="{{ url_for('forgotten') }}">Forgotten password?</a></p>
+    <p class="register-link">Don't have an account? <a href="{{ url_for('signup') }}">Sign up here</a></p>
 </form>
 {% endblock %}
