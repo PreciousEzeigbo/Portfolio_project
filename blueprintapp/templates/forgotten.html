@@ -2,6 +2,12 @@
 
 {% block title %}Forgotten Password - FitConnect{% endblock %}
 
+{% block logo %}
+    <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FitConnect Logo" class="logo-image">
+    </a>
+{% endblock %}
+
 {% block background_images %}
 <img src="{{ url_for('static', filename='images/workout-image.png') }}" class="background-image active">
 <img src="{{ url_for('static', filename='images/workout-image2.png') }}" class="background-image">

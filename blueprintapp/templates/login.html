@@ -6,6 +6,12 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/password.css') }}">
 {% endblock %}
 
+{% block logo %}
+    <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FitConnect Logo" class="logo-image">
+    </a>
+{% endblock %}
+
 {% block background_images %}
 <img src="{{ url_for('static', filename='images/workout-image.png') }}" class="background-image active">
 <img src="{{ url_for('static', filename='images/workout-image2.png') }}" class="background-image">
@@ -14,6 +20,12 @@
 {% endblock %}
 
 {% block content %}
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
 <form action="{{ url_for('login') }}" method="POST">
     <h2 class="title">Login</h2>
     <div class="input-field">
@@ -29,5 +41,6 @@
     <button type="submit" class="btn">Login</button>
     <p class="register-link"> <a href="{{ url_for('forgotten') }}">Forgotten password?</a></p>
     <p class="register-link">Don't have an account? <a href="{{ url_for('signup') }}">Sign up here</a></p>
+    
 </form>
 {% endblock %}

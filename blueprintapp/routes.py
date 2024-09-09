@@ -39,11 +39,12 @@ def register_routes(app, db, bcrypt):
                 flash("Email already in use", 'danger')
                 return redirect(url_for('signup'))
 
-            # Hash the password
-            hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-
             # Create and save the new user
-            user = User(username=username, email=email, password=hashed_password)
+            user = User(username=username, email=email)
+
+
+            # Hash the password
+            user.set_password(password)
 
             db.session.add(user)
             db.session.commit()
