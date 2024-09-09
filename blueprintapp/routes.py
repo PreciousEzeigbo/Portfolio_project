@@ -66,7 +66,7 @@ def register_routes(app, db, bcrypt):
                 # User exists and password is correct
                 login_user(user)
                 flash('Login successful!', 'success')  # Flash message for successful login
-                return redirect(url_for('/'))  # Redirect to a protected route or home page
+                return redirect(url_for('dashboard'))  # Redirect to a protected route or home page
             else:
                 # Invalid credentials
                 flash('Invalid username or password', 'danger')  # Flash message for login error
@@ -76,6 +76,13 @@ def register_routes(app, db, bcrypt):
     def forgotten():
         if request.method == 'GET':
             return render_template('forgotten.html')
+        elif request.method == 'POST':
+            pass
+
+    @app.route('/dashboard', methods=['GET', 'POST'])
+    def dashboard():
+        if request.method == 'GET':
+            return "Welcome"
         elif request.method == 'POST':
             pass
     
