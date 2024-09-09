@@ -51,6 +51,7 @@ def register_routes(app, db, bcrypt):
 
             flash("Account created successfully!", 'success')
             return redirect(url_for('login'))
+
     @app.route('/login', methods=['GET', 'POST'])
     def login():
         if request.method == 'GET':
