@@ -3,51 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitConnect - Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>FitConnect - Your Fitness Community</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleshome.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="container header-content">
+        <nav>
             <div class="logo">FitConnect</div>
-            <nav>
-                <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">Workouts</a></li>
-                    <li><a href="#">Challenges</a></li>
-                    <li><a href="#">Profile</a></li>
-                </ul>
-            </nav>
-        </div>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="{{ url_for('login') }}" class="cta-button">Join Now</a></li>
+            </ul>
+        </nav>
     </header>
+
     <main>
-        <div class="container dashboard-grid">
-            <aside class="sidebar">
-                <div class="profile-card">
-                    <img src="images/user-avatar.jpg" alt="Your Profile" class="profile-image">
-                    <h2>Your Name</h2>
-                    <p>@yourusername</p>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Connect, Track, Achieve</h1>
+                <p>Join FitConnect and transform your fitness journey with our supportive community.</p>
+                <a href="{{ url_for('login') }}" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <section id="features">
+            <h2>Empower Your Fitness Goals</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Workout Tracking</h3>
+                    <p>Log and monitor your workouts with ease. Stay on top of your fitness routine.</p>
                 </div>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3>Workouts</h3>
-                        <div class="value">28</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Calories</h3>
-                        <div class="value">12,543</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Active Min</h3>
-                        <div class="value">483</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Steps</h3>
-                        <div class="value">56,249</div>
+                <div class="feature-card">
+                    <h3>Workout History</h3>
+                    <p>Review your past workouts and track your progress over time.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Social Feed</h3>
+                    <p>Connect with other fitness enthusiasts, share your achievements, and get inspired.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About FitConnect</h2>
+            <p>FitConnect was born out of my personal fitness struggles. As someone who hasn't been to the gym yet (yes, you read that right!), I was looking for a way to stay active and hold myself accountable, all while connecting with others on a similar journey.</p>
+            <p>The result? FitConnect, a place where you can track progress, stay motivated, and eventually, flex your social muscles (pun intended).
+
+                Also, if you've ever found yourself wondering whether walking from the fridge to the couch counts as cardio – you’re in the right place</p>
+            <p>This project is a Portfolio Project for Holberton School, developed with dedication and expertise. Learn more about Holberton School <a href="https://www.holbertonschool.com/" target="_blank">here</a>.</p>
+            
+            <h3>Meet the Team</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt=" ">
+                    <h4>Precious Ezeigbo</h4>
+                    <p>Lead Developer</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/precious-ezeigbo-38902b247" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/PreciousEzeigbo" target="_blank">GitHub</a>
+                        <a href="https://x.com/PreciousEzeigbo" target="_blank">X</a>
                     </div>
                 </div>
-            </aside>
-            <section class="feed">
-                <form class="post-form">
-                    <textarea class="
+                <!-- Add more team members as needed -->
+            </div>
+            <p>Explore our <a href="https://github.com/PreciousEzeigbo/Protfolio_project" target="_blank">GitHub repository</a> for more details about the project.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 FitConnect. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
