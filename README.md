@@ -1,6 +1,9 @@
 # FitConnect
 
-Welcome to **FitConnect**, a fitness web application designed to help you track your workouts, view your workout history, and stay motivated by connecting with others. Whether you're a seasoned gym-goer or someone just starting out (like the creator, who’s never set foot in a gym!), FitConnect is here to support your fitness journey.
+Welcome to **FitConnect**, a fitness web application designed to help you track your workouts, view your workout history, and stay motivated by connecting with others. Whether you're a seasoned gym-goer or someone just starting out (like the creator, who’s never set foot in a gym!😅), FitConnect is here to support your fitness journey.
+
+
+![Yeahh!](image.png)
 
 ## Table of Contents
 
