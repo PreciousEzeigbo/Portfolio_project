@@ -10,8 +10,13 @@
 <body>
     <header>
         <nav>
-            <div class="logo">FitConnect</div>
-            <ul>
+            <div class="logo-container">
+                <a href="{{ url_for('index') }}" class="logo">
+                    <img src="/static/images/logo.png" alt="FitConnect Logo" class="logo-image">
+                    <span class="logo-text">FitConnect</span>
+                </a>
+            </div>
+            <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="{{ url_for('login') }}" class="cta-button">Join Now</a></li>

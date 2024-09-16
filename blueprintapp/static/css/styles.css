@@ -20,7 +20,6 @@ header {
     top: 0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0);
-    height: 60px;
     border-bottom: 1px solid #cccccc11;
     display: flex;
     justify-content: flex-start;
@@ -32,7 +31,7 @@ header {
 .logo {
     width: 142px;
     height: 60px;
-    background: url("/static/logo.png") no-repeat left center;
+    background: url("/static/images/logo.png") no-repeat left center;
     background-size: contain;
 }
 
