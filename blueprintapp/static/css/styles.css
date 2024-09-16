@@ -89,11 +89,24 @@ header {
     color: #333;
 }
 
-/* Input Field */
 .input-field {
-    margin: 8px 0;
-    padding: 10px;
+    position: relative;
+    margin-bottom: 20px;
 }
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.password-toggle i {
+    font-size: 18px;
+    color: #888;
+}
+
 
 .input-field input {
     font-family: Arial, Helvetica, sans-serif;

@@ -12,25 +12,25 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(changeBackground, 2000);
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const togglePassword = document.getElementById('togglePassword');
+document.getElementById('togglePassword').addEventListener('click', function () {
     const passwordField = document.getElementById('password');
+    const icon = this.querySelector('i');
 
-    // Get the URLs from the data attributes
-    const eyeIcon = togglePassword.getAttribute('data-eye-icon');
-    const eyeSlashIcon = togglePassword.getAttribute('data-eye-slash-icon');
-
-    togglePassword.addEventListener('click', function() {
-        // Toggle the type attribute
-        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordField.setAttribute('type', type);
-
-        // Toggle the eye slash icon
-        if (type === 'password') {
-            togglePassword.querySelector('img').src = eyeIcon; // Show eye icon
-        } else {
-            togglePassword.querySelector('img').src = eyeSlashIcon; // Show eye slash icon
-        }
-    });
+    // Toggle password visibility
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        icon.classList.remove('bi-eye');
+        icon.classList.add('bi-eye-slash');
+    } else {
+        passwordField.type = 'password';
+        icon.classList.remove('bi-eye-slash');
+        icon.classList.add('bi-eye');
+    }
 });
 
+
+// Initialize all tooltips on a page
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})

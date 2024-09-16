@@ -1,12 +1,16 @@
 {% extends "base.html" %}
-
 {% block title %}Signup - FitConnect{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
+{% endblock %}
 
 {% block logo %}
     <a href="{{ url_for('index') }}">
         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FitConnect Logo" class="logo-image">
     </a>
 {% endblock %}
+
 
 {% block background_images %}
 <img src="{{ url_for('static', filename='images/workout-image.png') }}" class="background-image active">
@@ -15,26 +19,32 @@
 <img src="{{ url_for('static', filename='images/workout-image4.png') }}" class="background-image">
 {% endblock %}
 
-{% block content %}
-{% for message in get_flashed_messages() %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>{{ message }}</strong> You will be redirected to the Login Page
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-{% endfor %}
 
-<form action="{{ url_for('signup') }}" method="POST" class="form register-form">
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+<form action="{{ url_for('signup') }}" method="POST">
     <h2 class="title">Sign Up</h2>
-    <div class="input-field">
+    <div class="mb-3 position-relative">
         <input type="text" name="username" placeholder="Username" required>
     </div>
-    <div class="input-field">
+    <div class="mb-3 position-relative">
         <input type="email" name="email" placeholder="Email" required>
     </div>
-    <div class="input-field">
+    <div class="mb-3 position-relative">
         <input type="password" name="password" placeholder="Password" required>
     </div>
-    <div class="input-field">
+    <div class="mb-3 position-relative">
         <input type="password" name="confirm_password" placeholder="Confirm Password" required>
     </div>
     <button type="submit" class="btn">Register</button>

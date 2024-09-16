@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.security import check_password_hash  # Import for checking hashed passwords
 
@@ -32,7 +32,7 @@ def register_routes(app, db, bcrypt):
             email_exists = User.query.filter_by(email=email).first()
 
             if user_exists:
-                flash("Username already taken", 'danger')
+                flash("User already exists", 'danger')
                 return redirect(url_for('signup'))
 
             if email_exists:
