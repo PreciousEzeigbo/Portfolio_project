@@ -10,6 +10,7 @@
     --text-color: #333;
     --bg-color: #f5f5f5;
     --white: #ffffff;
+    --black: black;
 }
 
 body {
@@ -26,11 +27,12 @@ a {
 
 /* Header and Navigation */
 header {
-    background-color: var(--white);
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     z-index: 10;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 nav {
@@ -176,24 +178,24 @@ h1, h2, h3 {
     color: white; /* To contrast with background images */
     transition: all 0.3s ease;
     position: relative;
-    min-height: 300px; /* Ensure enough space for image and text */
+    min-height: 300px; /* Ensures enough space for image and text */
 }
 
 /* Different background images for each card */
 .feature-card:nth-child(1) {
-    background-image: url("/static/images/workout-tracking.jpg");
+    background-image: url("/static/images/workout-tracking.png");
 }
 
 .feature-card:nth-child(2) {
-    background-image: url("/static/images/workout-history.jpg");
+    background-image: url("/static/images/workout-history.png");
 }
 
 .feature-card:nth-child(3) {
-    background-image: url("/static/images/social-feed.jpg");
+    background-image: url("/static/images/social-feed.png");
 }
 
 .feature-card h3, .feature-card p {
-    position: relative; /* Ensure text stays visible on top of the background */
+    position: relative; /* Ensures text stays visible on top of the background */
     z-index: 2;
 }
 
@@ -204,7 +206,7 @@ h1, h2, h3 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); /* Optional: dark overlay to enhance text readability */
+    background-color: rgba(0, 0, 0, 0.4); /*dark overlay to enhance text readability */
     z-index: 1;
 }
 
@@ -218,7 +220,7 @@ h1, h2, h3 {
     font-family: 'Comic Sans MS', sans-serif;
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--black);
 }
 
 /* About section */
