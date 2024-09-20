@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from flask_login import login_user, logout_user, current_user, login_required
+from flask_login import login_user, logout_user, current_user, login_required, LoginManager
 from werkzeug.security import check_password_hash  # Import for checking hashed passwords
 
-from blueprintapp.models import User
-
+from blueprintapp.models import User, db
 
 def register_routes(app, db, bcrypt):
 
@@ -68,7 +67,7 @@ def register_routes(app, db, bcrypt):
                 # User exists and password is correct
                 login_user(user)
                 flash('Login successful!', 'success')  # Flash message for successful login
-                return redirect(url_for('dashboard'))  # Redirect to a protected route or home page
+                return redirect(url_for('workout.workout_log'))  # Redirect to a protected route or home page
             else:
                 # Invalid credentials
                 flash('Invalid username or password', 'danger')  # Flash message for login error
@@ -80,19 +79,14 @@ def register_routes(app, db, bcrypt):
             return render_template('forgotten.html')
         elif request.method == 'POST':
             pass
-
-    @app.route('/dashboard', methods=['GET', 'POST'])
-    def dashboard():
-        if request.method == 'GET':
-            return "Welcome"
-        elif request.method == 'POST':
-            pass
     
     @app.route('/logout')
+    @login_required
     def logout():
         logout_user()
-        flash('You have been logged out.', 'info')
-        return redirect(url_for('/'))  # Redirect to a public page
+        flash("You have been logged out!", category="warning")
+        return redirect(url_for('index'))  # Redirect to a public page
+    
     
     @app.route('/profile') # only authenticated users can access
     @login_required
