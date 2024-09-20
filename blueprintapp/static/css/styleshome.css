@@ -119,7 +119,7 @@ h1, h2, h3 {
 
 /* Hero section */
 #hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-image: url("/static/images/workout-image4.png") ;
     color: var(--white);
     text-align: center;
     padding: 6rem 5%;
