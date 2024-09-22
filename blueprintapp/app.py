@@ -9,7 +9,7 @@ login_manager = LoginManager()
 
 def create_app():
     app = Flask(__name__, template_folder= 'templates')
-    workout_bp = Blueprint('workout', __name__, template_folder='templates')
+    workout_bp = Blueprint('workout', __name__, template_folder='templates', static_folder='static')
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fitconnect.db'
     app.config['SECRET_KEY'] = "my secret key you should not know"
     app.config['LOGIN_VIEW'] = 'login'

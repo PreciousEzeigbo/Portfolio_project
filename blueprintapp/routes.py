@@ -6,7 +6,7 @@ from blueprintapp.models import User, db
 
 def register_routes(app, db, bcrypt):
 
-    @app.route('/home', methods=['GET', 'POST'])
+    @app.route('/', methods=['GET', 'POST'])
     def home():
         return render_template('home.html')
     
