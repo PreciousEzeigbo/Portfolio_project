@@ -6,6 +6,7 @@ from blueprintapp.models import User, Exerciselist, Workout, Exercise, Set
 
 workout_bp = Blueprint('workout', __name__, template_folder='templates')
 
+# user dashboard when logged in
 @workout_bp.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
