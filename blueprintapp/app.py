@@ -12,7 +12,7 @@ def create_app():
     workout_bp = Blueprint('workout', __name__, template_folder='templates')
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fitconnect.db'
     app.config['SECRET_KEY'] = "my secret key you should not know"
-
+    app.config['LOGIN_VIEW'] = 'login'
 
     db.init_app(app)
     bcrypt = Bcrypt(app)
@@ -20,9 +20,8 @@ def create_app():
 
     # Initialize login_manager and set the login view
     login_manager.init_app(app)
-    login_manager.login_view = 'login'  # redirect to login page if not logged in
 
-    # Import models to ensure they are registered with SQLAlchemy
+    # Import models so they can be registered with SQLAlchemy
     from blueprintapp.models import User
     
 
@@ -30,8 +29,7 @@ def create_app():
     from blueprintapp.routes import register_routes
     register_routes(app, db, bcrypt)
     
-    from blueprintapp.blueprints.workout import workout_bp
-
+    from blueprintapp.blueprints.workout.routes import workout_bp
     app.register_blueprint(workout_bp, url_prefix='/workout')
     
 

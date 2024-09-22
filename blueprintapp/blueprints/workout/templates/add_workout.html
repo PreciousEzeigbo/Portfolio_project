@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 {% block title %}Add Workout{% endblock %}
 {% block content %}
 <br>
@@ -54,4 +54,36 @@
         </div>
     </div>
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let exerciseCount = 1;
+    
+        // Function to add new exercise
+        document.getElementById('addExercise').addEventListener('click', function () {
+            exerciseCount++;
+            const exerciseTemplate = document.getElementById('exercise_template').innerHTML;
+            const compiledTemplate = exerciseTemplate.replace(/<%= exercise_num %>/g, exerciseCount);
+            
+            const newExercise = document.createElement('div');
+            newExercise.innerHTML = compiledTemplate;
+            document.querySelector('form#workout').appendChild(newExercise);
+    
+            // Update hidden input with the new exercise count
+            document.querySelector('input[name="exercise_count"]').value = exerciseCount;
+        });
+    
+        // Function to add new set to the current exercise
+        document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('addSet')) {
+                const exerciseNum = event.target.getAttribute('exercise');
+                const setTemplate = document.getElementById('set_template').innerHTML;
+                const compiledTemplate = setTemplate.replace(/<%= exercise_num %>/g, exerciseNum);
+    
+                const targetDiv = document.getElementById('exercise' + exerciseNum);
+                targetDiv.insertAdjacentHTML('beforeend', compiledTemplate);
+            }
+        });
+    });
+    </script>
+    
 {% endblock %}

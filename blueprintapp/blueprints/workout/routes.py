@@ -1,23 +1,27 @@
 from flask import render_template, redirect, url_for, flash, Blueprint, request
 from flask_login import login_user, logout_user, login_required, current_user
-from datetime import datetime
+from datetime import datetime, timedelta
 from blueprintapp.app import db
 from blueprintapp.models import User, Exerciselist, Workout, Exercise, Set
 
 workout_bp = Blueprint('workout', __name__, template_folder='templates')
 
-
+@workout_bp.route('/dashboard', methods=['GET', 'POST'])
+@login_required
+def dashboard():
+    return render_template('index.html')
+    
 @workout_bp.route('/workout')
 @login_required
-def workout_log():
+def workout():
+    print("Workout route reached")  # Debug line
     workouts = Workout.query.filter_by(user_id=current_user.uid).order_by(Workout.date.desc()).all()
-    return render_template('workout/workout_log.html', workouts=workouts)
+    return render_template('workout_log.html', workouts=workouts)
 
 @workout_bp.route('/add_workout', methods=['POST', 'GET'])
 @login_required
 def add_workout():
     if request.method == 'POST':
-        user = User.query.filter_by(username=current_user.username).first()
         workout = Workout(date=datetime.now(), user_id=current_user.uid)
         exercise_count = int(request.form['exercise_count'])
 
@@ -36,7 +40,7 @@ def add_workout():
         return redirect(url_for('workout.add_workout'))
 
     exercises = Exerciselist.query.all()
-    return render_template('workout/add_workout.html', exercises=exercises)
+    return render_template('add_workout.html', exercises=exercises)
 
 @workout_bp.route('/edit', methods=['POST', 'GET'])
 @login_required
@@ -50,7 +54,7 @@ def edit():
                 set.reps = request.form['reps' + str(set.id)]
         db.session.commit()
         flash("Workout updated!", category="success")
-        return redirect(url_for('workout.workout_log'))
+        return redirect(url_for('workout'))
 
 @workout_bp.route('/delete', methods=['POST', 'GET'])
 @login_required
@@ -61,4 +65,32 @@ def delete():
         db.session.delete(workout)
         db.session.commit()
         flash("Workout deleted!", category="warning")
-        return redirect(url_for('workout.workout_log'))
+        return redirect(url_for('workout.workout'))
+
+@workout_bp.route('/profile')
+@login_required
+def profile():
+    # Calculate exercises in the last week
+    last_week = datetime.now() - timedelta(days=7)
+    exercises_last_week = Workout.query.filter(
+        Workout.user_id == current_user.uid,
+        Workout.date >= last_week
+    ).count()
+
+    # Calculate exercises in the last month
+    last_month = datetime.now() - timedelta(days=30)
+    exercises_last_month = Workout.query.filter(
+        Workout.user_id == current_user.uid,
+        Workout.date >= last_month
+    ).count()
+
+    return render_template('profile.html',
+                           exercises_last_week=exercises_last_week,
+                           exercises_last_month=exercises_last_month)
+
+@workout_bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash("You have been logged out!", category="warning")
+    return redirect(url_for('home'))  # Redirect to a public page

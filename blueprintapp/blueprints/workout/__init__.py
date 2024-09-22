@@ -1,1 +1,3 @@
-from .routes import workout_bp
+from flask import Blueprint
+
+workout_bp = Blueprint('workout', __name__, template_folder='templates')

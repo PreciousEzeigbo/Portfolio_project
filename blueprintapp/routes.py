@@ -6,8 +6,8 @@ from blueprintapp.models import User, db
 
 def register_routes(app, db, bcrypt):
 
-    @app.route('/', methods=['GET', 'POST'])
-    def index():
+    @app.route('/home', methods=['GET', 'POST'])
+    def home():
         return render_template('home.html')
     
     @app.route('/signup', methods=['GET', 'POST'])
@@ -67,7 +67,7 @@ def register_routes(app, db, bcrypt):
                 # User exists and password is correct
                 login_user(user)
                 flash('Login successful!', 'success')  # Flash message for successful login
-                return redirect(url_for('workout.workout_log'))  # Redirect to a protected route or home page
+                return redirect(url_for('workout.dashboard'))  # Redirect to a protected route or home page
             else:
                 # Invalid credentials
                 flash('Invalid username or password', 'danger')  # Flash message for login error
@@ -79,19 +79,6 @@ def register_routes(app, db, bcrypt):
             return render_template('forgotten.html')
         elif request.method == 'POST':
             pass
-    
-    @app.route('/logout')
-    @login_required
-    def logout():
-        logout_user()
-        flash("You have been logged out!", category="warning")
-        return redirect(url_for('index'))  # Redirect to a public page
-    
-    
-    @app.route('/profile') # only authenticated users can access
-    @login_required
-    def profile():
-        return render_template('profile.html')
     
     # Custom error pages
 
