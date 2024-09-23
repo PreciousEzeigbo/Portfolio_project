@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block title %}View Workout{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Workout Details</h1>
+    <h2>Date: {{ workout.date.strftime("%c") }}</h2>
+    
+    <h3>Exercises</h3>
+    <ul>
+        {% for exercise in workout.exercises %}
+            <li>
+                <strong>{{ exercise.exercise.name }}</strong>
+                <ul>
+                    {% for set in exercise.sets %}
+                        <li>{{ set.weight }} x {{ set.reps }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('workout.workout') }}" class="btn btn-primary">Back to Workout Log</a>
+</div>
+{% endblock %}
