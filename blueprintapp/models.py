@@ -23,6 +23,7 @@ class User(db.Model, UserMixin):
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
     workouts = db.relationship('Workout', backref='user', lazy='dynamic')
     posts = db.relationship('Post', backref='user', lazy=True)
+    comments = db.relationship('Comment', back_populates='user', lazy=True)
 
     def __repr__(self):
         return f'<User: {self.username}>'
@@ -75,8 +76,8 @@ class Post(db.Model):
     # Relationship for likes
     likes = db.relationship('User', secondary=likes_table, backref=db.backref('liked_posts', lazy='dynamic'))
 
-    # Relationship for comments, using a unique backref name
-    comments = db.relationship('Comment', backref='post_ref', lazy=True)
+    # Relationship for comments, using back_populates
+    comments = db.relationship('Comment', back_populates='post', lazy='dynamic')
 
     def __repr__(self):
         return f"Post('{self.content}', '{self.created_at}')"
@@ -89,8 +90,8 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.uid'), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    post = db.relationship('Post', backref=db.backref('post_comments', lazy=True))
-    user = db.relationship('User', backref=db.backref('comments', lazy=True))
+    post = db.relationship('Post', back_populates='comments')
+    user = db.relationship('User', back_populates='comments')
 
     def __repr__(self):
         return f"Comment('{self.content}', '{self.created_at}')"
