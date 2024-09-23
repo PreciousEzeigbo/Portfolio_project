@@ -65,6 +65,8 @@ pip install -r requirements.txt
 
 ```bash
 
+flask init
+flask db migrate -m "Initial migration"
 flask db upgrade
 
 # This will set up the database for FitConnect. We're using SQLite, so you don't need any additional setup.
