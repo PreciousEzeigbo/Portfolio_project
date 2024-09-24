@@ -65,7 +65,7 @@ pip install -r requirements.txt
 
 ```bash
 
-flask init
+flask db init
 flask db migrate -m "Initial migration"
 flask db upgrade
 
